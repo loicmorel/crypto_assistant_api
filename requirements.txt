@@ -1,0 +1,49 @@
+# lib for technical analysis
+## ATTENTION, run before brew install ta-lib
+ta
+TA-Lib==0.4.24
+finta
+
+# lib for exchanges connectivity
+binance
+python-binance
+
+# libs for social-services access
+tweepy
+python-telegram-bot
+
+# core libs
+pandas
+requests
+numpy
+colorama
+ccxt
+pyyaml
+structlog
+python-json-logger
+joblib
+termcolor
+tqdm
+fastapi
+pyts
+memoized_property
+mlflow
+pylint
+
+# google
+google
+google.cloud
+google-api-python-client
+google-cloud-storage
+
+
+# plot libs
+plotly
+matplotlib
+seaborn
+
+# notebook
+jupyter
+
+# server
+uvicorn

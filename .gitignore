@@ -1,0 +1,17 @@
+*.egg-info
+.coverage
+.ipynb_checkpoints
+.DS_Store
+.env
+*.log
+raw_data/
+*.csv
+__pycache__
+raw_data
+data/
+models/
+modeling_loic/
+
+# critical credentials to keep secret
+le-wagon-bootcamp-348503-61912b770aaa.json
+config.yml

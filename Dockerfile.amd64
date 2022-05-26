@@ -1,0 +1,41 @@
+
+# write some code to build your image
+FROM python:3.8.13-buster
+
+# # TA-lib is required by the python TA-lib wrapper. This provides analysis.
+# COPY lib/ta-lib-0.4.0-src.tar.gz /tmp/ta-lib-0.4.0-src.tar.gz
+
+# RUN cd /tmp && \
+#   tar -xvzf ta-lib-0.4.0-src.tar.gz && \
+#   cd ta-lib/ && \
+#   ./configure --prefix=/usr && \
+#   make && \
+#   make install
+
+# Install TA-lib
+COPY build_helpers/* /tmp/
+RUN cd /tmp && /tmp/install_ta-lib.sh && rm -r /tmp/*ta-lib*
+ENV LD_LIBRARY_PATH /usr/local/lib
+
+WORKDIR /package
+
+COPY requirements.txt /package/requirements.txt
+COPY requirements_amd64.txt /package/requirements_amd64.txt
+RUN pip install --upgrade pip
+#RUN pip install tensorflow==2.6.0 -f https://tf.kmtea.eu/whl/stable.html
+RUN pip install -r requirements_amd64.txt
+
+COPY app /package/app
+COPY api /package/api
+COPY conf/config.yml /package/conf/config.yml
+COPY conf/default_config.yml /package/conf/default_config.yml
+COPY le-wagon-bootcamp-348503-61912b770aaa.json /google_credentials.json
+COPY setup.py /package/setup.py
+RUN mkdir -p /package/data
+RUN mkdir -p /package/models
+
+RUN pip install .
+ENV GOOGLE_APPLICATION_CREDENTIALS=/google_credentials.json
+ENV CUDA_VISIBLE_DEVICES=''
+
+CMD uvicorn api.ca_api:ca_api --host 0.0.0.0 --port $PORT

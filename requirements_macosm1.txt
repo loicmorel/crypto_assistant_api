@@ -1,0 +1,17 @@
+# Include all main requirements
+-r requirements.txt
+
+# modelling
+tensorboard==2.7.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow-datasets==4.4.0
+tensorflow-estimator==2.5.0
+tensorflow-macos==2.5.0
+tensorflow-metadata==1.5.0
+#keras
+keras-nightly==2.5.0.dev2021032900
+Keras-Preprocessing==1.1.2
+scikit-image==0.19.1
+scikit-learn==1.0.2
+scipy==1.7.3

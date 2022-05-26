@@ -1,0 +1,86 @@
+# Copy this file to config.yml to get started and then add your own configuration.
+
+project:
+## global project metadata
+  project_name: cryptoassistant
+  project_version: v1.0
+
+  ## google GCS configuration
+  project_id: le-wagon-bootcamp-348503
+  # from https://cloud.google.com/storage/docs/locations#available_locations
+  region: asia-east2
+  job_name: cryptoassistant_training_pipeline
+
+  ## google bucket configuration
+  bucket_name: cryptoassistant
+  bucket_training_folder: trainings
+  bucket_models_folder: models
+  bucket_data_folder: data
+
+  ## MLFlow connfiguration
+  mlflow_uri: https://mlflow.lewagon.ai/
+  mlflow_experiment_name: "[CN][850][Crypto Assistant] modelisation - v1"
+
+settings:
+  rounding: 8
+
+  input-mode: guided # custom or guided
+  output-mode: backtesting # backtesting or prediction
+
+  window-period: # ignore if output-mode=prediction
+    - start_date: 2022-01-01_00:00
+    - end_date: 2022-01-02_00:00
+
+portfolio_config:
+  trading_pairs: # pairs, [frequencies]
+    - ETH/USDT, [1m, 5m, 1h]
+    - LTC/USDT, [1m, 1h, 1h]
+    - XMR/USDT, [1m, 1h, 1d]
+
+  # asset/ratio in the pf (total = 100%), ignore if input-mode=guided
+  init_ratio:
+    - ETH, 30%
+    - BTC, 50%
+    - SOL, 20%
+
+  # acceptable loss for a trading session ; in % of the initial invest
+  acceptable_loss_ratio: 50
+
+profile_config:
+  pseudo: name
+  email: xxx@xxx.xxx
+
+reporting:
+  send_email: YES
+  report_type:
+    perf_report: YES
+    correlation_report: YES
+    analysis_report: YES
+
+exchanges:
+  binance:
+    enabled: false
+    commission_buy: x.xx
+    commission_sell: x.xx
+    public_key: 'XXX'
+    secret_key: 'XXX'
+
+web_scraping:
+  site_name: url
+
+logging:
+  system:
+    log_level: DEBUG
+    log_mode: standard
+    log_path: ./logs/system/system.log
+    stdout: True
+  trading:
+    log_level: INFO
+    log_mode: standard
+    log_path: ./logs/trading/trading.log
+    stdout: False
+  strategy:
+    log_level: DEBUG
+    log_mode: standard
+    log_path: ./logs/strategy/strategy.log
+    stdout: False

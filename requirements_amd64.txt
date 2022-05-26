@@ -1,0 +1,32 @@
+# Include all main requirements
+-r requirements.txt
+
+# modelling
+# tensorboard
+# tensorboard-data-server
+# tensorboard-plugin-wit
+# tensorflow
+# tensorflow-dataset
+# tensorflow-estimator
+# tensorflow-io-gcs-filesystem
+# tensorflow-metadata
+# keras-nightly
+# keras
+# Keras-Preprocessing
+# scikit-image
+# scikit-learn
+# scipy
+
+tensorboard==2.7.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow==2.7.0
+tensorflow-datasets==4.4.0
+tensorflow-estimator==2.7.0
+tensorflow-io-gcs-filesystem==0.23.1
+tensorflow-metadata==1.5.0
+keras==2.7.0
+Keras-Preprocessing==1.1.2
+scikit-image==0.19.1
+scikit-learn==1.0.2
+scipy==1.7.3
